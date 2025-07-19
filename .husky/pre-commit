@@ -1,0 +1,11 @@
+#!/bin/sh
+# Optional: enforce branch naming convention
+branch_name=$(git rev-parse --abbrev-ref HEAD)
+
+if ! echo "$branch_name" | grep -Eq '^(feature|fix|hotfix|release|chore|refactor)/.+$'; then
+  echo "❌ Invalid branch name: '$branch_name'"
+  echo "Branch name must follow: feature/*, fix/*, etc."
+  exit 1
+fi
+
+npx lint-staged
