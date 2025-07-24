@@ -1,4 +1,4 @@
-import { httpStatusCode } from "../constants/common.constants";
+import { httpStatusCode } from '../constants/common.constants';
 
 export interface ApiResponse {
   success: boolean;

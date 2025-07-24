@@ -5,7 +5,7 @@ const { timestamp, combine, errors, json } = format;
 
 const buildProdLogger = (): winston.Logger => {
   return createLogger({
-    level: 'info', 
+    level: 'info',
     format: combine(timestamp(), errors({ stack: true }), json()),
     defaultMeta: {},
     transports: [
@@ -13,9 +13,10 @@ const buildProdLogger = (): winston.Logger => {
       new DailyRotateFile({
         dirname: 'logs',
         filename: 'info-%DATE%.log',
+        // eslint-disable-next-line sonarjs/no-duplicate-string
         datePattern: 'YYYY-MM-DD',
         level: 'info',
-        zippedArchive: true,// Compress logs for better storage efficiency
+        zippedArchive: true, // Compress logs for better storage efficiency
         maxFiles: '15d', // Retain logs for 15 days
       }),
       new DailyRotateFile({

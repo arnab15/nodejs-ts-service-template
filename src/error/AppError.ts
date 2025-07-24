@@ -1,4 +1,6 @@
-import { httpStatusCode } from "../constants/common.constants";
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { httpStatusCode } from '../constants/common.constants';
 
 export class AppError extends Error {
   public readonly success: boolean;

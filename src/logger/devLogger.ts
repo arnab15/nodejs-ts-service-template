@@ -4,7 +4,7 @@ import DailyRotateFile from 'winston-daily-rotate-file';
 const { timestamp, combine, printf, errors, colorize } = format;
 
 const logFormat = printf(({ level, message, timestamp, stack }) => {
-  return `${timestamp} ${level}: ${stack || message}`;
+  return `${timestamp} ${level}: ${stack ?? message}`;
 });
 
 const buildDevLogger = (): winston.Logger => {
@@ -28,6 +28,7 @@ const buildDevLogger = (): winston.Logger => {
       new DailyRotateFile({
         dirname: 'logs',
         filename: 'info-%DATE%.log',
+        // eslint-disable-next-line sonarjs/no-duplicate-string
         datePattern: 'YYYY-MM-DD',
         level: 'info',
         zippedArchive: true,

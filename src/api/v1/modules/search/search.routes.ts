@@ -1,7 +1,8 @@
 import { Router } from 'express';
+
+import { SearchController } from './search.controller';
 import { SearchRepository } from './search.repository';
 import { SearchService } from './search.service';
-import { SearchController } from './search.controller';
 
 const searchRouter = Router();
 
