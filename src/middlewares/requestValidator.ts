@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response, NextFunction } from 'express';
 import { ZodSchema, ZodError } from 'zod';
+
 import { httpStatusCode } from '../constants/common.constants';
 import { sendResponse } from '../utils/sendResponse';
 
 const validateRequest = (schema: ZodSchema<any>) => {
-  return (req: Request, res: Response, next: NextFunction) => {
+  return (req: Request, res: Response, next: NextFunction): void => {
     try {
       schema.parse({
         body: req.body,
@@ -21,12 +23,13 @@ const validateRequest = (schema: ZodSchema<any>) => {
 
         const message = path ? `${path} - ${firstError.message}` : firstError.message;
 
-        return sendResponse(res, {
+        sendResponse(res, {
           success: false,
           statusCode: httpStatusCode.BAD_REQUEST,
           message,
           data: err.issues,
         });
+        return;
       }
 
       return next(err);

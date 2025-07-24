@@ -1,6 +1,6 @@
 import winston from 'winston';
-import buildDevLogger from './devLogger';
 
+import buildDevLogger from './devLogger';
 import buildProdLogger from './prodLogger';
 
 let logger: winston.Logger;

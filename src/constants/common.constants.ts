@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 export enum httpStatusCode {
   OK = 200,
   CREATED = 201,
