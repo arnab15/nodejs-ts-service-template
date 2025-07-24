@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // src/utils/swagger.ts
 import fs from 'fs';
+import path from 'path';
+
 import { globSync } from 'glob';
 import yaml from 'js-yaml';
-import path from 'path';
 
 export function loadSwaggerSpec(): any {
   const files = globSync(path.join(__dirname, '../docs/**/*.yml')); // ✅ correct
