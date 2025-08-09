@@ -8,7 +8,7 @@ import { handelOrderDeliveryArrivedStore } from './handelOrderDeliveryArrivedSto
 import { handelDeliveryArrivedUser } from './handelOrderDeliveryArrivedUser';
 import { handelOrderDeliveryPicked } from './handelOrderDeliveryPicked';
 import { handelOrderReadyForPickup } from './handelOrderReadyForPickup';
-import { handelUserLoginOtp } from './handelSenduserLoginOtp';
+import { handelUserLoginOtp } from './handelSendUserLoginOtp';
 import { handelShopDetailsUpdate } from './handelShopDetailsUpdate';
 import { handelUserDetailsUpdate } from './handelUserDetailsUpdate';
 import { handelPaymentStatusFailed } from './handlePaymentStatus';
