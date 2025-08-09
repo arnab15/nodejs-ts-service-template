@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  main-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: main-service
+    environment:
+      NODE_ENV: production
+      MONGO_URI: mongodb://mongo:27017/notifications
+    depends_on:
+      - mongo
+    ports:
+      - '3000:3000'
+
+  email-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    container_name: email-worker
+    environment:
+      NODE_ENV: production
+      WORKER_TYPE: email
+      MONGO_URI: mongodb://mongo:27017/notifications
+    depends_on:
+      - mongo
+
+  sms-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    container_name: sms-worker
+    environment:
+      NODE_ENV: production
+      WORKER_TYPE: sms
+      MONGO_URI: mongodb://mongo:27017/notifications
+    depends_on:
+      - mongo
+
+  whatsapp-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    container_name: whatsapp-worker
+    environment:
+      NODE_ENV: production
+      WORKER_TYPE: whatsapp
+      MONGO_URI: mongodb://mongo:27017/notifications
+    depends_on:
+      - mongo
+
+  fcm-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    container_name: fcm-worker
+    environment:
+      NODE_ENV: production
+      WORKER_TYPE: fcm
+      MONGO_URI: mongodb://mongo:27017/notifications
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
+    driver: local

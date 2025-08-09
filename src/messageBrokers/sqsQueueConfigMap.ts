@@ -1,0 +1,45 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import dotenv from 'dotenv';
+
+import { BrokerTopics } from './Interfaces/topics';
+dotenv.config();
+
+export const queueTopicMap: Record<string, BrokerTopics[]> = {
+  [process.env.PAYMENT_FAILED_COMMUNICATION!]: [BrokerTopics.PAYMENT_FAILED],
+  [process.env.ORDER_CONFIRMED_COMMUNICATION!]: [BrokerTopics.ORDER_CONFIRMED],
+  [process.env.ORDER_STORE_ACCEPTED_COMMUNICATION!]: [BrokerTopics.ORDER_STORE_ACCEPTED],
+  [process.env.DELIVERY_ASSIGN_COMMUNICATION!]: [BrokerTopics.DELIVERY_ASSIGN],
+  [process.env.ORDER_DELIVERY_ASSIGNED_COMMUNICATION!]: [BrokerTopics.ORDER_DELIVERY_ASSIGNED],
+  [process.env.ORDER_READY_FOR_PICKUP_COMMUNICATION!]: [BrokerTopics.ORDER_READY_FOR_PICKUP],
+  [process.env.ORDER_DELIVERY_ARRIVED_STORE_COMMUNICATION!]: [
+    BrokerTopics.ORDER_DELIVERY_ARRIVED_STORE,
+  ],
+  [process.env.ORDER_DELIVERY_PICKED_COMMUNICATION!]: [BrokerTopics.ORDER_DELIVERY_PICKED],
+  [process.env.ORDER_DELIVERY_ARRIVED_USER_COMMUNICATION!]: [
+    BrokerTopics.ORDER_DELIVERY_ARRIVED_USER,
+  ],
+  [process.env.ORDER_DELIVERED_COMMUNICATION!]: [BrokerTopics.ORDER_DELIVERED],
+  //consume this event
+  [process.env.SEND_USER_LOGIN_OTP_COMMUNICATION!]: [BrokerTopics.SEND_USER_LOGIN_OTP],
+
+  [process.env.COMMUNICATION_LOGIN_OTP_SMS_CHANNEL_COMMUNICATION!]: [
+    BrokerTopics.SEND_LOGIN_OTP_SMS_CHANNEL,
+  ],
+
+  [process.env.SHOP_DETAILS_UPDATE_COMMUNICATION!]: [
+    BrokerTopics.SHOP_DETAILS_UPDATED_COMMUNICATION,
+  ],
+  [process.env.USER_DETAILS_UPDATE_COMMUNICATION!]: [
+    BrokerTopics.USER_DETAILS_UPDATED_COMMUNICATION,
+  ],
+  [process.env.DELIVERY_AGENT_DETAILS_UPDATE_COMMUNICATION!]: [
+    BrokerTopics.DELIVERY_AGENT_DETAILS_UPDATED_COMMUNICATION,
+  ],
+
+  [process.env.COMMUNICATION_SMS_CHANNEL_COMMUNICATION!]: [BrokerTopics.SEND_TO_SMS_CHANNEL],
+  [process.env.COMMUNICATION_EMAIL_CHANNEL_COMMUNICATION!]: [BrokerTopics.SEND_TO_EMAIL_CHANNEL],
+  [process.env.COMMUNICATION_PUSH_CHANNEL_COMMUNICATION!]: [BrokerTopics.SEND_TO_PUSH_CHANNEL],
+  [process.env.COMMUNICATION_WHATSAPP_CHANNEL_COMMUNICATION!]: [
+    BrokerTopics.SEND_TO_WHATSAPP_CHANNEL,
+  ],
+};

@@ -1,7 +1,7 @@
 import express from 'express';
 
-import searchRouter from './search/search.routes';
+import recipientTokenRouter from './recipent/recipient.token.router';
 const mainRouter = express.Router();
-mainRouter.use(searchRouter);
+mainRouter.use(recipientTokenRouter);
 
 export default mainRouter;
